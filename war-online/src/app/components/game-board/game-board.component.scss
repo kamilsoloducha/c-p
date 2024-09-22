@@ -1,0 +1,16 @@
+.game-card-container {
+  display: flex;
+  flex-direction: row;
+
+  .game-card-item {
+    padding: 1rem;
+    width: 100%;
+  }
+}
+
+.next-battle-button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
