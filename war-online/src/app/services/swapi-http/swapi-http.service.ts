@@ -18,7 +18,7 @@ export class SwapiHttpService {
   }
 
   public getOrderedPerson(index: number): Observable<PersonDto> {
-    return this.httpClient.get<PeopleSummaryDto>(`${this.swapiUrl}/people?page=${index}&limit=1"`).pipe(switchMap((peopleSummaryDto) => this.getPerson(Number(peopleSummaryDto.results[0].uid))));
+    return this.httpClient.get<PeopleSummaryDto>(`${this.swapiUrl}/people?page=${index}&limit=1`).pipe(switchMap((peopleSummaryDto) => this.getPerson(Number(peopleSummaryDto.results[0].uid))));
   }
 
   public getPeopleCount(): Observable<number> {
@@ -34,6 +34,6 @@ export class SwapiHttpService {
   }
 
   public getOrderedStarship(index: number): Observable<StarshipDto> {
-    return this.httpClient.get<StarshipSummaryDto>(`${this.swapiUrl}/starships?page=${index}&limit=1"`).pipe(switchMap((starshipDto) => this.getStarship(Number(starshipDto.results[0].uid))));
+    return this.httpClient.get<StarshipSummaryDto>(`${this.swapiUrl}/starships?page=${index}&limit=1`).pipe(switchMap((starshipDto) => this.getStarship(Number(starshipDto.results[0].uid))));
   }
 }

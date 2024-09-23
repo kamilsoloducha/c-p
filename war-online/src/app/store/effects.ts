@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { GameActions } from './actions';
-import { exhaustMap, forkJoin, map, switchMap, withLatestFrom } from 'rxjs';
+import { exhaustMap, forkJoin, map, switchMap, tap, withLatestFrom } from 'rxjs';
 import { ResourceElementsCountProviderResolver } from '../services/elements-count/elements-count.provider';
 import { GameState } from './state';
 import { Store } from '@ngrx/store';
