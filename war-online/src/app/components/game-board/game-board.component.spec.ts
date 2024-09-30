@@ -28,8 +28,6 @@ describe('GameBoardComponent', () => {
 
     fixture = TestBed.createComponent(GameBoardComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-
     mockStore = TestBed.inject(MockStore);
   });
 
@@ -39,14 +37,16 @@ describe('GameBoardComponent', () => {
       player2Selector = mockStore.overrideSelector(selectPlayer2, { name: 'Player2', points: 2, currentCard: { name: 'name', mass: 1 } });
 
       mockStore.refreshState();
-      fixture.detectChanges();
     });
 
     it('should create', () => {
+      fixture.detectChanges();
+
       expect(component).toBeTruthy();
     });
 
     it('should create results$', () => {
+      fixture.detectChanges();
       expect(component.results$).toBeObservable(
         cold('a', {
           a: [
@@ -96,6 +96,7 @@ describe('GameBoardComponent', () => {
 
     it('should render next battle button', () => {
       component.isNextBattleButtonVisible$ = of(true);
+      fixture.detectChanges();
       const nextBattleButton = fixture.debugElement.query(By.css('button'));
 
       expect(nextBattleButton).toBeTruthy();

@@ -28,6 +28,7 @@ class FinishInitializationContext {
   expectedState: GameState = {
     ...initialGameState,
     elementsCount: 1,
+    isLoading: true,
   };
 }
 

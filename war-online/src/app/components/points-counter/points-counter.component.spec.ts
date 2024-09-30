@@ -14,11 +14,11 @@ describe('PointsCounterComponent', () => {
 
     fixture = TestBed.createComponent(PointsCounterComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    fixture.detectChanges();
   });
 
   it('should render results', () => {
