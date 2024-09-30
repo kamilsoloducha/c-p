@@ -1,16 +1,25 @@
-.game-card-container {
+.game-board-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
 
-  .game-card-item {
-    padding: 1rem;
+  .game-card-container {
     width: 100%;
-  }
-}
+    display: flex;
+    flex-direction: row;
 
-.next-battle-button {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
+    .game-card-item {
+      padding: 1rem;
+      width: 100%;
+    }
+  }
+
+  .next-battle-button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0.5rem;
+    width: 40%;
+  }
 }

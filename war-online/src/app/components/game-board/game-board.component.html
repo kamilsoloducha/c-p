@@ -1,14 +1,16 @@
-<div class="game-card-container">
-  @for (card of cards$ | async; track card.playerName) {
-  <div class="game-card-item">
-    <h4>{{card.playerName}}</h4>
-    <app-game-card [cardName]="card.cardName" [attributeName]="card.attributeName" [attributeValue]="card.value" />
+<div class="game-board-container">
+  <div class="game-card-container">
+    @for (card of cards$ | async; track card.playerName) {
+    <div class="game-card-item">
+      <h4>{{card.playerName}}</h4>
+      <app-game-card [cardName]="card.cardName" [attributeName]="card.attributeName" [attributeValue]="card.value" />
+    </div>
+    }
   </div>
+
+  @if (isNextBattleButtonVisible$ | async) {
+  <button class="next-battle-button" [disabled]="isLoading$ | async" (click)="nextBattle()">Next battle</button>
   }
+
+  <app-points-counter [results]="(results$ | async) || []" />
 </div>
-
-@if (isNextBattleButtonVisible$ | async) {
-<button class="next-battle-button" [disabled]="isLoading$ | async" (click)="nextBattle()">Next battle</button>
-}
-
-<app-points-counter [results]="(results$ | async) || []" />

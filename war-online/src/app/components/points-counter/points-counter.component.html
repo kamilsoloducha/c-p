@@ -1,8 +1,11 @@
-@for (item of results; track item.playerName) {
-<p>
-  <b>
-    {{item.playerName}}
-  </b>
-  : {{item.counter}}
-</p>
-}
+<div class="results-container">
+  <h6>Results: </h6>
+  @for (item of results; track item.playerName) {
+  <p>
+    <b>
+      {{item.playerName}}
+    </b>
+    : {{item.counter}}
+  </p>
+  }
+</div>
