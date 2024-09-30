@@ -1,6 +1,4 @@
-import { TestBed } from '@angular/core/testing';
 import { GameFeature } from '../reducer';
-import { Action, StoreModule } from '@ngrx/store';
 import { GameActions } from '../actions';
 import { GameState, initialGameState } from '../state';
 import { ResourceEnum } from '../../common/models/resource';

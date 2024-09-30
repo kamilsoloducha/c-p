@@ -2,14 +2,15 @@ import { inject, Injectable } from '@angular/core';
 import { map, Observable, tap } from 'rxjs';
 import { Person, Resource, ResourceEnum, Starship } from '../../common/models/resource';
 import { SwapiHttpService } from '../swapi-http/swapi-http.service';
-import { getRandom } from '../utils';
+import { random } from '../utils';
 
 @Injectable({ providedIn: 'root' })
 export class CardProvider {
   private readonly swapiClinet = inject(SwapiHttpService);
 
   getRandomCard(elementCount: number, resourceType: ResourceEnum): Observable<Resource> {
-    const randomResourceIndex = getRandom(1, elementCount);
+    const randomResourceIndex = random.getRandom(1, elementCount);
+    console.log(randomResourceIndex);
 
     switch (resourceType) {
       case ResourceEnum.People:
