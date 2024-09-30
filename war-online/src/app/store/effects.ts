@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { GameActions } from './actions';
-import { exhaustMap, forkJoin, map, switchMap, tap, withLatestFrom } from 'rxjs';
+import { catchError, exhaustMap, forkJoin, map, switchMap, tap, withLatestFrom, EMPTY } from 'rxjs';
 import { ResourceElementsCountProviderResolver } from '../services/elements-count/elements-count.provider';
 import { GameState } from './state';
 import { Store } from '@ngrx/store';
@@ -25,6 +25,10 @@ export class GameEffects {
           resourceElementsCount: resourceCount,
         }),
       ),
+      catchError((_) => {
+        alert('Error has occured. Please refresh the page');
+        return EMPTY;
+      }),
     ),
   );
 
@@ -36,6 +40,10 @@ export class GameEffects {
         return forkJoin([this.cardProvider.getRandomCard(count!, resource!), this.cardProvider.getRandomCard(count!, resource!)]);
       }),
       map(([player1, player2]) => GameActions.setResult({ player1Card: player1, player2Card: player2 })),
+      catchError((_) => {
+        alert('Error has occured. Please refresh the page');
+        return EMPTY;
+      }),
     ),
   );
 }
