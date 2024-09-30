@@ -8,7 +8,7 @@
 </div>
 
 @if (isNextBattleButtonVisible$ | async) {
-<button class="next-battle-button" (click)="nextBattle()">Next battle</button>
+<button class="next-battle-button" [disabled]="isLoading$ | async" (click)="nextBattle()">Next battle</button>
 }
 
 <app-points-counter [results]="(results$ | async) || []" />

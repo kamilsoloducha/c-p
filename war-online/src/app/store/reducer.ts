@@ -17,7 +17,7 @@ export const GameFeature = createFeature({
     on(GameActions.finishInitialization, (state, action) => {
       return {
         ...state,
-        isLoading: false,
+        isLoading: true,
         elementsCount: action.resourceElementsCount,
       };
     }),

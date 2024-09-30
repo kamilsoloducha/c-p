@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { GameState } from '../../store/state';
 import { Store } from '@ngrx/store';
-import { selectPlayer1, selectPlayer2 } from '../../store/selectors';
+import { selectIsLoading, selectPlayer1, selectPlayer2 } from '../../store/selectors';
 import { combineLatest, map, Observable } from 'rxjs';
 import { Result } from '../../common/models/results';
 import { CardInfo } from '../../common/models/card-info';
@@ -11,6 +11,7 @@ import { GameActions } from '../../store/actions';
   selector: 'app-game-board',
   templateUrl: './game-board.component.html',
   styleUrl: './game-board.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameBoardComponent {
   private readonly store = inject(Store<GameState>);
@@ -46,6 +47,8 @@ export class GameBoardComponent {
       return players.find((player) => player.currentCard !== undefined) !== undefined;
     }),
   );
+
+  isLoading$ = this.store.select(selectIsLoading);
 
   nextBattle(): void {
     this.store.dispatch(GameActions.drawCards());

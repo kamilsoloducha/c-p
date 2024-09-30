@@ -1,5 +1,5 @@
 <mat-form-field>
-  <mat-select [(value)]="selected" placeholder="Select resource type...">
+  <mat-select [disabled]="isLoading$ | async" [(value)]="selected" placeholder="Select resource type...">
     <mat-option>None</mat-option>
     @for (option of options; track option) {
     <mat-option [value]="option.value">{{option.label}}</mat-option>

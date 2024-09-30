@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideMockStore } from '@ngrx/store/testing';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { ResourceSelectorComponent } from './resource-selector.component';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -22,7 +22,7 @@ describe('ResourceSelectorComponent', () => {
       providers: [provideMockStore({ initialState })],
     }).compileComponents();
 
-    store = TestBed.inject(Store<GameState>);
+    store = TestBed.inject(MockStore);
     fixture = TestBed.createComponent(ResourceSelectorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

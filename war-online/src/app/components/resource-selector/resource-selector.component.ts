@@ -1,13 +1,15 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ResourceEnum } from '../../common/models/resource';
 import { GameState } from '../../store/state';
 import { Store } from '@ngrx/store';
 import { GameActions } from '../../store/actions';
+import { selectIsLoading } from '../../store/selectors';
 
 @Component({
   selector: 'app-resource-selector',
   templateUrl: './resource-selector.component.html',
   styleUrl: './resource-selector.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ResourceSelectorComponent {
   private readonly store = inject(Store<GameState>);
@@ -28,4 +30,6 @@ export class ResourceSelectorComponent {
       this.store.dispatch(GameActions.initialize({ resourceType: value }));
     }
   }
+
+  isLoading$ = this.store.select(selectIsLoading);
 }
