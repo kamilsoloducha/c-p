@@ -1,5 +1,3 @@
-import { random } from '../../src/app/services/utils';
-
 describe('template spec', () => {
   let reqNo = 0;
 
